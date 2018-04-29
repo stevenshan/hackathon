@@ -25,6 +25,7 @@ class Parser:
 		except:
 			raise ValueError("Directory does not exist.")
 
+	# convert all files in a directory to dictionary
 	@staticmethod
 	def convertDirJSON(dir):
 		dirList = Parser.getDirList(dir)
@@ -40,6 +41,7 @@ class Parser:
 				print(str(int(float(count) / length * 100)) + "%")
 			file = (dir if dir[-1] == "/" else dir + "/") + filename
 			result = Parser.readFile(file)[0]
+			result["path"] = filename
 			total.append(result)
 
 		return total
