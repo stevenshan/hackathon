@@ -1,5 +1,9 @@
 # MSA Safety Hackathon
 
+## Paper
+
+Our final paper is [here](https://www.stevenshan.com/msa-safety-hackathon/docs/paper.pdf).
+
 ## Setup
 Run `python setup.py` to extract data files.
 
