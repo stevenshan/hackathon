@@ -90,7 +90,7 @@ $\bullet$
 \date{\today} % Leave empty to omit a date
 \renewcommand{\maketitlehookd}{%
 \begin{abstract}
-\noindent \blindtext % Dummy abstract text - replace \blindtext with your abstract text
+\noindent Data analytics have improved organizations' understanding of ways to mitigate danger in the workplace. Oil and mine plants are one application that stood out to us, in particular, due to their high risks as well as the potential to apply results from data analysis to constructing a safer environment for workers to work in. We utilized the data that were provided to us by the MSA to analyze possible trends in sensor readings and alarm activities. Based on our parsed data, we were able to drew conclusions from the charts produced. We include suggestions for improvements, especially in the data collection phase. We also propose an interactive web application that could be used to improve worker engagement and ultimately improve safety in high-risk environment.
 \end{abstract}
 }
 
@@ -107,18 +107,15 @@ $\bullet$
 
 \section{Introduction}
 
-\lettrine[nindent=0em,lines=3]{L} orem ipsum dolor sit amet, consectetur adipiscing elit.
-\blindtext % Dummy text
-
-\blindtext % Dummy text
-
+This is our submission for the 2018 MSA Safety Hackathon on methods for improving worker safety at gas production facilities based on analysis of sensor data and alarms triggered during a four month period. It is for the \texttt{Predictive Analysis} category of the hackathon although we include some business like methodology with the proposal at the end. We begin with a quick suggestion based on our experience working with the data using methodology described in the following methods section. All of the data we worked with is available in our Git repository and can be extracted using the provided \texttt{setup.py} file. We then list some suggestions for organizing the data and our analysis of the data. Finally, we have a proposal for a website portal for workers to view incident history as well as safety guidelines.
 
 %------------------------------------------------
 
 \section{Suggestions}
 
 The way the data is currently stored, if sensor readings in parts per million (PPM) reaches a certain threshold, they will trigger an alarm. We believe that standardizing thresholds on a scale of 0 to 10, workers will be able to be better understand the severity of the situation. For example, as it currently is hydrogen sulfide ($H_2 S$) has a low threshold of 10 while methane has a low threshold of $0.5$. If a worker were to briefly look at the readings, and see a reading of $1.0$ for both, they might think they are perfectly within safe thresholds because $H_2 S$ has a threshold a factor of 10 greater. This could pose a major safety hazard because methane actually has a much lower threshold. By standardizing a scale, workers could better judge the safety of the environment with the gas readings. In addition, a scaling factor could be includied in the data to convert from the scale to each threshold to PPM so that no data is lost in this process.\\\\
-We suggest scaling each reading for parts per million to a 0 to 10 scale where a 0 would be safe, 5 would be lower exposure, and 10 would be high exposure. This removes the human error element when workers have to memorize safe PPM thresholds for each gas reading since a rating from 5 to 10 would represent a dangerous environment regardless of gas type.
+We suggest scaling each reading for parts per million to a 0 to 10 scale where a 0 would be safe, 5 would be lower exposure, and 10 would be high exposure. This removes the human error element when workers have to memorize safe PPM thresholds for each gas reading since a rating from 5 to 10 would represent a dangerous environment regardless of gas type.\\\\
+We also include a proposal for a website service at the end of this paper.
 
 %------------------------------------------------
 
