@@ -68,9 +68,12 @@ def periodicDataPKL():
     zip_ref.extractall(SETUP_DIR)
     zip_ref.close()
 
+def printUsage():
+    print("Usage: python setup.py [all|data|sessionData|periodicDataJSON|periodicDataPKL]")
+
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
-        print("Usage: python setup.py [all|data|sessionData|periodicDataJSON|periodicDataPKL]")
+        printUsage()
         exit() 
 
     argument = sys.argv[1]
@@ -89,5 +92,5 @@ if __name__ == "__main__":
     elif argument == "periodicDataPKL":
         periodicDataPKL()
     else:
-        print("Usage: python setup.py [all|sessionData|periodicData]")
+        printUsage()
 
