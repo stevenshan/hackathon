@@ -2,6 +2,7 @@ import zipfile
 import re
 import os
 import sys
+from shutil import copyfile
 
 SETUP_DIR = "data/"
 
@@ -78,6 +79,7 @@ if __name__ == "__main__":
         sessionData()
         periodicDataJSON()
         periodicDataPKL()
+        copyfile("setup/Makefile", SETUP_DIR + "Makefile")
     elif argument == "data":
         dataFiles()
     elif argument == "sessionData":
