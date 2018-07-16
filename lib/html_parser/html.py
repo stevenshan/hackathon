@@ -22,7 +22,10 @@ class HTML():
 		#  0 for iterating through tag
 		#  1 for termination
 		flag = -1 
-		
+
+		selfClosingPat = re.compile(".*/[ ]*$")
+		selfClosing = selfClosingPat.match(tag_content) != None 
+
 		# find substring that makes up tag
 		# terminated by either space or forward slash				
 		while flag != 1 and i < len(tag_content):
@@ -46,7 +49,7 @@ class HTML():
 		     tag in HTML.void_elements:
 			raise ValueError("Attempting to close void tag")
 		result["tag"] = tag
-		return i
+		return (i, selfClosing)
 
 	# helper for read_tag to get key and value for parameter 
 	@staticmethod
@@ -115,14 +118,14 @@ class HTML():
 	@staticmethod
 	def read_tag(tag_content):
 		i = 0
-		result = {"tag": None, "parameters": {}, "closing_tag": False}
+		result = {"tag": None, "parameters": {}, "closing_tag": False, "self_closing": False}
 		first_char = True
 		while i < len(tag_content):
 			c = tag_content[i]
 			if c != " ":
 				# name of tag should be first non-space character
 				if first_char is True:
-					i = HTML.read_tag_label(result, c, tag_content, i)
+					i, result["self_closing"] = HTML.read_tag_label(result, c, tag_content, i)
 				else:
 					i = HTML.read_tag_parameter(result, tag_content, i)
 				first_char = False
@@ -184,7 +187,8 @@ class HTML():
 						new_element = Element(tag["tag"], tag["parameters"], \
 								      parent, len(parent.content))
 						parent.content.append([1, new_element])	
-						if tag["tag"] not in self.void_elements:
+						if (tag["tag"] not in self.void_elements and
+								not tag["self_closing"]):
 							S.push(parent)
 							parent = new_element
 						
